@@ -1,0 +1,18 @@
+nav {
+        width: 70%;
+        max-width: 800px;
+        justify-content: flex-end;
+}
+
+nav ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+}
+
+nav ul li {
+        margin-right: 20px;
+        color: white;
+        list-style: none;
+}
