@@ -6,3 +6,22 @@
         box-sizing: border-box;
         font-family: 'Roboto', sans-serif;
 }
+
+#root {
+        min-width: 1024px;
+        width: 100%;
+        min-height: 780px;
+        height: 100vh;
+        display: flex;
+}
+
+.App {
+        
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+}
+main {
+        display: flex;
+        flex-grow: 1;
+}
