@@ -1,0 +1,29 @@
+.calories {
+        display: flex;
+        padding: 32px;
+        background-color: #FBFBFB;
+        width: 258;
+}
+.calories .data {
+        margin-left: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+}
+.calories .data p {
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font: 700;
+}
+.calories .data span {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font: 400;
+}
+
+.icon{
+        padding: 21px;
+        background-color: #FF000033;
+        border-radius: 6px;
+}

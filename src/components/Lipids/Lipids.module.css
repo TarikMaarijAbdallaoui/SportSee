@@ -1,0 +1,29 @@
+.lipids {
+        display: flex;
+        padding: 32px;
+        background-color: #FBFBFB;
+        width: 258;
+}
+.lipids .data {
+        margin-left: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+}
+.lipids .data p {
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font: 700;
+}
+.lipids .data span {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font: 400;
+}
+
+.icon{
+        padding: 21px;
+        background-color: #FD518133;
+        border-radius: 6px;
+}

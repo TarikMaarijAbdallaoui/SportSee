@@ -1,0 +1,29 @@
+.proteins {
+        display: flex;
+        padding: 32px;
+        background-color: #FBFBFB;
+        width: 258;
+}
+.proteins .data {
+        margin-left: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+}
+.proteins .data p {
+        font-size: 20px;
+        font-family: 'Roboto', sans-serif;
+        font: 700;
+}
+.proteins .data span {
+        font-size: 14px;
+        font-family: 'Roboto', sans-serif;
+        font: 400;
+}
+
+.icon{
+        padding: 21px;
+        background-color: #4AB8FF33;
+        border-radius: 6px;
+}
