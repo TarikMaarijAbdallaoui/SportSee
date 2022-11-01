@@ -1,24 +1,22 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Heading.css";
 import { useParams } from "react-router-dom";
+import { getData } from "../../getData";
 
 const Heading = () => {
+  const [user, setUser] = useState({})
   const { id } = useParams();
 
-  useEffect(() => {
-    async function getData(id) {
-      try{
-        const response = await fetch(`localhost:3000/user/${id}`)
-      const data =  await response.json()
-
-      console.log(data)
-      } catch (error) {console.log(error)}
-      
-        
+  useEffect(()=>{
+    async function fetchUser(id) {
+      const userData = await getData(id);
+      setUser(userData)
     }
-    getData(id)
-  }, []);
-  const name = 'Lucas'
+
+    fetchUser(id)
+  }, [])
+  
+  const name = user?.userInfos?.firstName || "Tarik";
   return (
     <header>
       <h2 className="title">
