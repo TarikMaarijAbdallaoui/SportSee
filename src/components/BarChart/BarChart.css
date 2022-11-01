@@ -1,5 +1,57 @@
 .activity{
         background-color: #FBFBFB;
         border-radius: 5px;
-        padding: 24px;
+        height: 320px;
+        width: 835px;
+        position: relative;
+}
+.activity_title {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        font-size: 15px;
+        color:#20253A
+}
+.activity_legend {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        gap: 32px;
+}
+
+.activity_legend .kilogram,
+.activity_legend .calories {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 500;
+        color: #74798C;
+}
+
+
+.activity_legend .kilogram .description,
+.activity_legend .calories .description {
+        margin-left: 8px;
+}
+
+.kilogram .bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #000000;
+}
+
+.calories .bullet {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: red;
+}
+.recharts-responsive-container {
+        width: 100%;
+        height: 100%;
 }

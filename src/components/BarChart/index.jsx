@@ -1,80 +1,106 @@
-import React, { PureComponent } from 'react';
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import './BarChart.css'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { getActivity } from "../../getData";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import "./BarChart.css";
 
-const data = [
-  {
-    name: 'Page A',
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
-  },
-  {
-    name: 'Page B',
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
-  },
-  {
-    name: 'Page C',
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
-  },
-  {
-    name: 'Page D',
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
-  },
-  {
-    name: 'Page E',
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
-  },
-  {
-    name: 'Page F',
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
-  },
-  {
-    name: 'Page G',
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
-  },
-];
+export default function Activity() {
+  const [activity, setActivity] = useState([]);
+  const { id } = useParams();
 
-export default class Example extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/simple-bar-chart-tpz8r';
+  useEffect(() => {
+    async function fetchUser(id) {
+      const userActivity = await getActivity(id);
+      userActivity.forEach(item => item.day = parseInt(item.day.slice(-2)) )
+      setActivity(userActivity);
+    }
 
-  render() {
-    return (
-       
-      <ResponsiveContainer width="100%" height="100%">
+    fetchUser(id);
+  }, []);
+
+  console.log("User activity", activity);
+
+  const data = activity;
+  console.log("data ", data);
+  return (
+    <div className="activity">
+      <span className="activity_title">Activité quotidienne</span>
+      <div className="activity_legend">
+        <div className="kilogram">
+          <div className="bullet"></div>
+          <p className="description">Poids (kg)</p>
+        </div>
+        <div className="calories">
+          <div className="bullet"></div>
+          <p className="description">Calories brûlées</p>
+        </div>
+      </div>
+      <ResponsiveContainer>
         <BarChart
-          width={500}
-          height={300}
+          width={"100%"}
+          height={"40%"}
           data={data}
+          barGap={8}
+          barCategoryGap={"20%"}
           margin={{
-            top: 5,
+            top: 100,
             right: 30,
             left: 20,
-            bottom: 5,
+            bottom: 30
           }}
         >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis dataKey="day"  tickLine={false} axisLine={false} tickMargin={16} tick={{stroke: "#9B9EAC"}}/>
+          <YAxis
+            tickCount={6}
+            domain={[0, 600]}
+            dataKey="calories"
+            axisLine={false}
+            tickLine={false}
+            tick={false}
+            hide={true}
+            yAxisId="cal"
+          />
+          <YAxis
+            orientation="right"
+            tickCount={3}
+            domain={["dataMin - 1, dataMax"]}
+            dataKey="kilogram"
+            axisLine={false}
+            tickLine={false}
+            tickMargin={30}
+            tick={{ stroke: "#9B9EAC" }}
+          />
           <Tooltip />
-          <Legend />
-          <Bar dataKey="pv" fill="#FF0000" barSize={5} />
-          <Bar dataKey="uv" fill="#000000" barSize={5} />
+          <Bar
+            dataKey="calories"
+            stackId={"cal"}
+            fill="#FF0000"
+            radius={[25, 25, 0, 0]}
+            barSize={8}
+            label={false}
+            yAxisId="cal"
+          />
+          <Bar
+            dataKey="kilogram"
+            stackId={"kg"}
+            fill="#000000"
+            radius={[25, 25, 0, 0]}
+            barSize={8}
+            label={false}
+          />
         </BarChart>
       </ResponsiveContainer>
-      
-    );
-  }
+    </div>
+  );
 }
