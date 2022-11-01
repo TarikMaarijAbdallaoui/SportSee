@@ -1,0 +1,11 @@
+.average {
+        position: relative;
+}
+
+.average .title {
+        position: absolute;
+        top: 29px;
+        left: 34px;
+        color: white;
+        font-size: 15px;
+}
