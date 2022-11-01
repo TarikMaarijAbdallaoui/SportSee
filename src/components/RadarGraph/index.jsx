@@ -1,5 +1,7 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from 'recharts';
+import { getPerformance } from '../../getData';
 
 const data = [
   {
@@ -40,10 +42,20 @@ const data = [
   },
 ];
 
-export default class RadarGraph extends PureComponent {
-  static demoUrl = 'https://codesandbox.io/s/simple-radar-chart-rjoc6';
+export default function RadarGraph() {
+  const [performance, setPerformance] = useState({})
+  const {id} = useParams()
+  useEffect(() => {
+    async function fetchData() {
+      const data = await getPerformance(id)
 
-  render() {
+      setPerformance(data)
+    }
+    fetchData()
+  }, [])
+  
+  console.log(performance)
+ 
     return (
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={data}>
@@ -54,5 +66,5 @@ export default class RadarGraph extends PureComponent {
         </RadarChart>
       </ResponsiveContainer>
     );
-  }
+  
 }
