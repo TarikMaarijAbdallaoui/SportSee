@@ -1,8 +1,9 @@
 .calories {
         display: flex;
         padding: 32px;
-        background-color: #FBFBFB;
-        width: 258;
+        background-color: gray; /* #FBFBFB; */
+        width: 258px;
+        border-radius: 5px
 }
 .calories .data {
         margin-left: 24px;

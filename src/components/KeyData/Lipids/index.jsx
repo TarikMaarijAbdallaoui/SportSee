@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from '../../assets/cheeseburger.svg'
+import icon from '../../../assets/cheeseburger.svg'
 import classes from './Lipids.module.css'
 
 const Lipids = ({data}) => {

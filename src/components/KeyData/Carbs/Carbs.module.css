@@ -1,22 +1,23 @@
-.proteins {
+.carbs {
         display: flex;
         padding: 32px;
-        background-color: #FBFBFB;
-        width: 258;
+        background-color: gray; /* #FBFBFB; */
+        width: 258px;
+        border-radius: 5px;
 }
-.proteins .data {
+.carbs .data {
         margin-left: 24px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
 }
-.proteins .data p {
+.carbs .data p {
         font-size: 20px;
         font-family: 'Roboto', sans-serif;
         font: 700;
 }
-.proteins .data span {
+.carbs .data span {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
         font: 400;
@@ -24,6 +25,6 @@
 
 .icon{
         padding: 21px;
-        background-color: #4AB8FF33;
+        background-color: #F9CE2333;
         border-radius: 6px;
 }

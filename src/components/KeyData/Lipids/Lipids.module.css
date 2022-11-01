@@ -1,22 +1,23 @@
-.carbs {
+.lipids {
         display: flex;
         padding: 32px;
-        background-color: #FBFBFB;
-        width: 258;
+        background-color: gray; /* #FBFBFB; */
+        width: 258px;
+        border-radius: 5px;
 }
-.carbs .data {
+.lipids .data {
         margin-left: 24px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
 }
-.carbs .data p {
+.lipids .data p {
         font-size: 20px;
         font-family: 'Roboto', sans-serif;
         font: 700;
 }
-.carbs .data span {
+.lipids .data span {
         font-size: 14px;
         font-family: 'Roboto', sans-serif;
         font: 400;
@@ -24,6 +25,6 @@
 
 .icon{
         padding: 21px;
-        background-color: #F9CE2333;
+        background-color: #FD518133;
         border-radius: 6px;
 }

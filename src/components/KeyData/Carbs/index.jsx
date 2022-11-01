@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './Carbs.module.css'
-import icon from '../../assets/apple.svg'
+import icon from '../../../assets/apple.svg'
 
 const Carbs = ({data}) => {
         return (
@@ -10,7 +10,7 @@ const Carbs = ({data}) => {
                     </div>
                     <div className={classes.data}>
                             <p>{data}g</p>
-                            <span>Lipids</span>
+                            <span>Glucides</span>
                     </div>
                 </div>
               )

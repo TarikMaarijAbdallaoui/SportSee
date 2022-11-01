@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from '../../assets/energy.svg'
+import icon from '../../../assets/energy.svg'
 import classes from './Calories.module.css'
 const Calories = ({data}) => {
         return (
@@ -8,8 +8,8 @@ const Calories = ({data}) => {
                             <img src={icon} alt="" />
                     </div>
                     <div className={classes.data}>
-                            <p>{data}g</p>
-                            <span>Lipids</span>
+                            <p>{data}kCal</p>
+                            <span>Calories</span>
                     </div>
                 </div>
               )
