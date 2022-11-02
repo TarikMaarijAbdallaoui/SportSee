@@ -1,7 +1,7 @@
 .calories {
         display: flex;
         padding: 32px;
-        background-color: gray; /* #FBFBFB; */
+        background-color: #FBFBFB; 
         width: 258px;
         border-radius: 5px
 }

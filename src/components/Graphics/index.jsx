@@ -12,36 +12,36 @@ import KPI from "../KPI";
 import Activity from "../BarChart";
 
 const Graphics = () => {
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
   const { id } = useParams();
 
-  useEffect(()=>{
+  useEffect(() => {
     async function fetchUser(id) {
       const userData = await getData(id);
-      setUser(userData)
+      setUser(userData);
     }
 
-    fetchUser(id)
-  }, [])
-  
+    fetchUser(id);
+  }, []);
+
   return (
     <div className="graphics_container">
       <div className="graphics">
         <Activity />
         <div className="radar">
-          {/* <div className="average"> */}
-          <AverageSessions />
-          {/* </div> */}
-          <div className="radarg">
+          <div className="average">
+            <AverageSessions />
+          </div>
+          {/* <div className="radarg">
           <RadarGraph /></div>
-          <KPI />
+          <KPI /> */}
         </div>
       </div>
       <div className="stats">
         <Calories data={user?.keyData?.calorieCount || 100} />
         <Proteins data={user?.keyData?.proteinCount || 100} />
         <Carbs data={user?.keyData?.carbohydrateCount || 100} />
-        <Lipids data={user?.keyData?.lipidCount ||100} />
+        <Lipids data={user?.keyData?.lipidCount || 100} />
       </div>
     </div>
   );

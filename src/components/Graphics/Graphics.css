@@ -14,9 +14,7 @@
   height: 630px;
 }
 .radar {
-  background-color: red;
   height: 360px;
-  width: 100%;
   display: flex;
   gap: 31px;
 }
