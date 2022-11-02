@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:3000/user"
+const BASE_URL = "http://localhost:3000/user";
 
 export async function getData(id) {
   try {
@@ -6,7 +6,7 @@ export async function getData(id) {
     const data = await response.json();
 
     console.log(data.data);
-    return data.data
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -18,7 +18,7 @@ export async function getPerformance(id) {
     const data = await response.json();
 
     console.log(data.data);
-    return data.data
+    return data.data;
   } catch (error) {
     console.log(error);
   }
@@ -30,7 +30,7 @@ export async function getActivity(id) {
     const data = await response.json();
 
     console.log("get Activity", data.data.sessions);
-    return data.data.sessions
+    return data.data.sessions;
   } catch (error) {
     console.log(error);
   }
@@ -41,8 +41,13 @@ export async function getAverageSessions(id) {
     const response = await fetch(`${BASE_URL}/${id}/average-sessions`);
     const data = await response.json();
 
-    console.log(data.data);
-    return data.data
+    const days = ["L", "M", "M", "J", "V", "S", "D"];
+    const sessions = data.data.sessions.map((element, index) => {
+      return { day: days[index], sessionLength: element.sessionLength };
+    });
+
+    console.log(sessions);
+    return sessions;
   } catch (error) {
     console.log(error);
   }
