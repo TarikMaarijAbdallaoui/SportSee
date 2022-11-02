@@ -14,6 +14,16 @@ import {
 } from "recharts";
 import "./BarChart.css";
 
+const CustomTooltip = ({ active, payload }) => {
+  if (active && payload) {
+    return (
+      <div className="tooltip">
+        <p>{`${payload[0].value}`}cal</p>
+        <p>{`${payload[1].value}`}kg</p>
+      </div>
+    );
+  }
+};
 export default function Activity() {
   const [activity, setActivity] = useState([]);
   const { id } = useParams();
@@ -21,7 +31,7 @@ export default function Activity() {
   useEffect(() => {
     async function fetchUser(id) {
       const userActivity = await getActivity(id);
-      userActivity.forEach(item => item.day = parseInt(item.day.slice(-2)) )
+      userActivity.forEach((item) => (item.day = parseInt(item.day.slice(-2))));
       setActivity(userActivity);
     }
 
@@ -31,7 +41,7 @@ export default function Activity() {
   console.log("User activity", activity);
 
   const data = activity;
-  console.log("data ", data);
+
   return (
     <div className="activity">
       <span className="activity_title">Activité quotidienne</span>
@@ -53,14 +63,20 @@ export default function Activity() {
           barGap={8}
           barCategoryGap={"20%"}
           margin={{
-            top: 100,
+            top: 120,
             right: 30,
-            left: 20,
-            bottom: 30
+            left: 40,
+            bottom: 30,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
-          <XAxis dataKey="day"  tickLine={false} axisLine={false} tickMargin={16} tick={{stroke: "#9B9EAC"}}/>
+          <XAxis
+            dataKey="day"
+            tickLine={false}
+            axisLine={false}
+            tickMargin={16}
+            tick={{ stroke: "#9B9EAC" }}
+          />
           <YAxis
             tickCount={6}
             domain={[0, 600]}
@@ -74,14 +90,14 @@ export default function Activity() {
           <YAxis
             orientation="right"
             tickCount={3}
-            domain={["dataMin - 1, dataMax"]}
+            domain={["dataMin - 1", "dataMax"]}
             dataKey="kilogram"
             axisLine={false}
             tickLine={false}
             tickMargin={30}
             tick={{ stroke: "#9B9EAC" }}
           />
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <Bar
             dataKey="calories"
             stackId={"cal"}
@@ -93,7 +109,6 @@ export default function Activity() {
           />
           <Bar
             dataKey="kilogram"
-            stackId={"kg"}
             fill="#000000"
             radius={[25, 25, 0, 0]}
             barSize={8}
