@@ -1,5 +1,9 @@
 .average {
         position: relative;
+        background-color: red;
+        border-radius: 5px;
+        width: 258px;
+        height: 263px;
 }
 
 .average .title {
@@ -8,4 +12,10 @@
         left: 34px;
         color: white;
         font-size: 15px;
+        width: 70%;
+}
+.tooltip {
+        font-size: 12px;
+        background-color: white;
+        padding: 10px;
 }
