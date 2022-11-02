@@ -17,8 +17,15 @@ export async function getPerformance(id) {
     const response = await fetch(`${BASE_URL}/${id}/performance`);
     const data = await response.json();
 
-    console.log(data.data);
-    return data.data;
+    const performance = data.data.data.map(item => {
+      return {
+        value: item.value,
+        kind: data.data.kind[item.kind]
+      }
+    })
+
+    console.log("Performance fetcch", performance);
+    return performance;
   } catch (error) {
     console.log(error);
   }
