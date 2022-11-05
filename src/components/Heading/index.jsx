@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Heading.css";
 import { useParams } from "react-router-dom";
 import { getData } from "../../getData";
@@ -16,7 +16,7 @@ const Heading = () => {
     fetchUser(id)
   }, [])
   
-  const name = user?.userInfos?.firstName || "Tarik";
+  const name = user?.userInfos?.firstName;
   return (
     <header>
       <h2 className="title">
