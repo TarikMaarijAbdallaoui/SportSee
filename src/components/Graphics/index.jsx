@@ -7,18 +7,22 @@ import Proteins from "../KeyData/Proteins";
 import Carbs from "../KeyData/Carbs";
 import Calories from "../KeyData/Calories";
 import { getData } from "../../getData";
-import { useParams } from "react-router-dom";
-import KPI from "../KPI";
+import { useNavigate, useParams } from "react-router-dom";
 import Activity from "../BarChart";
+import ScoreChart from "../ScoreChart";
 
 const Graphics = () => {
   const [user, setUser] = useState({});
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchUser(id) {
       const userData = await getData(id);
       setUser(userData);
+      if (!userData) {
+        navigate("/not-found");
+      }
     }
 
     fetchUser(id);
@@ -32,16 +36,17 @@ const Graphics = () => {
           <div className="average">
             <AverageSessions />
           </div>
-          {/* <div className="radarg">
-          <RadarGraph /></div>
-          <KPI /> */}
+          <div className="radarg">
+            <RadarGraph />
+          </div>
+          <ScoreChart data={user?.todayScore || user?.score} />
         </div>
       </div>
       <div className="stats">
-        <Calories data={user?.keyData?.calorieCount || 100} />
-        <Proteins data={user?.keyData?.proteinCount || 100} />
-        <Carbs data={user?.keyData?.carbohydrateCount || 100} />
-        <Lipids data={user?.keyData?.lipidCount || 100} />
+        <Calories data={user?.keyData?.calorieCount || 0} />
+        <Proteins data={user?.keyData?.proteinCount || 0} />
+        <Carbs data={user?.keyData?.carbohydrateCount || 0} />
+        <Lipids data={user?.keyData?.lipidCount || 0} />
       </div>
     </div>
   );
