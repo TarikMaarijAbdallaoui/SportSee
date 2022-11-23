@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/BarChart/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/BarChart/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types'
+import { useParams } from "react-router-dom";
+import { getActivity } from "../../getData";
+import {
+  BarChart,
+  Bar,
+  Cell,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import "./BarChart.css";
+
+/**
+ * Tooltip component for user activity
+ * @component
+ * @param {bool} active - Tooltip hovered
+ * @param {array} payload - User activity
+ * @returns 
+ */
+const CustomTooltip = ({ active, payload }) => {
+  if (active &amp;&amp; payload) {
+    return (
+      &lt;div className="tooltip">
+        &lt;p>{`${payload[0].value}`}cal&lt;/p>
+        &lt;p>{`${payload[1].value}`}kg&lt;/p>
+      &lt;/div>
+    );
+  }
+};
+
+/**
+ * Graphic showing user activity sessions
+ * @component
+ * @returns {node} Rechart Line chart graphics
+ */
+export default function Activity() {
+  const [activity, setActivity] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    async function fetchUser(id) {
+      const userActivity = await getActivity(id);
+      setActivity(userActivity);
+    }
+
+    fetchUser(id);
+  }, []);
+
+  console.log("User activity", activity);
+
+  const data = activity;
+
+  return (
+    &lt;div className="activity">
+      &lt;span className="activity_title">Activité quotidienne&lt;/span>
+      &lt;div className="activity_legend">
+        &lt;div className="kilogram">
+          &lt;div className="bullet">&lt;/div>
+          &lt;p className="description">Poids (kg)&lt;/p>
+        &lt;/div>
+        &lt;div className="calories">
+          &lt;div className="bullet">&lt;/div>
+          &lt;p className="description">Calories brûlées&lt;/p>
+        &lt;/div>
+      &lt;/div>
+      &lt;ResponsiveContainer>
+        &lt;BarChart
+          width={"100%"}
+          height={"40%"}
+          data={data}
+          barGap={8}
+          barCategoryGap={"20%"}
+          margin={{
+            top: 120,
+            right: 30,
+            left: 40,
+            bottom: 30,
+          }}
+        >
+          &lt;CartesianGrid strokeDasharray="3 3" vertical={false} />
+          &lt;XAxis
+            dataKey="day"
+            tickLine={false}
+            axisLine={false}
+            tickMargin={16}
+            tick={{ stroke: "#9B9EAC" }}
+          />
+          &lt;YAxis
+            tickCount={6}
+            domain={[0, 600]}
+            dataKey="calories"
+            axisLine={false}
+            tickLine={false}
+            tick={false}
+            hide={true}
+            yAxisId="cal"
+          />
+          &lt;YAxis
+            orientation="right"
+            tickCount={3}
+            domain={["dataMin - 1", "dataMax"]}
+            dataKey="kilogram"
+            axisLine={false}
+            tickLine={false}
+            tickMargin={30}
+            tick={{ stroke: "#9B9EAC" }}
+          />
+          &lt;Tooltip content={&lt;CustomTooltip />} />
+          &lt;Bar
+            dataKey="calories"
+            stackId={"cal"}
+            fill="#FF0000"
+            radius={[25, 25, 0, 0]}
+            barSize={8}
+            label={false}
+            yAxisId="cal"
+          />
+          &lt;Bar
+            dataKey="kilogram"
+            fill="#000000"
+            radius={[25, 25, 0, 0]}
+            barSize={8}
+            label={false}
+          />
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/div>
+  );
+}
+
+CustomTooltip.propTypes = {
+  /**
+   * Tooltip being hovered
+   */
+  active: PropTypes.bool,
+  /**
+   * Array with session length and day
+   */ 
+  payload: PropTypes.array
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Boton">Boton</a></li><li><a href="global.html#Calories">Calories</a></li><li><a href="global.html#Carbs">Carbs</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Graphics">Graphics</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Lipids">Lipids</a></li><li><a href="global.html#Logo">Logo</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#MenuVertical">MenuVertical</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#Proteins">Proteins</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Nov 23 2022 18:09:36 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

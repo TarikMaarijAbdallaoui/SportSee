@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: getData/index.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: getData/index.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import userDataMock from "./mocks/userData.json"
+import userActivityMock from "./mocks/userActivity.json"
+import userSessionsMock from "./mocks/userSessions.json"
+import userPerformanceMock from "./mocks/userPerformance.json"
+import user18DataMock from "./mocks/user18Data.json"
+import user18ActivityMock from "./mocks/user18Activity.json"
+import user18SessionsMock from "./mocks/user18Sessions.json"
+import user18PerformanceMock from "./mocks/user18Performance.json"
+
+console.log("activity mock",userActivityMock)
+
+const BASE_URL = "http://localhost:3000/user";
+
+
+/**
+ * Function to get the user info
+ * @param {string} id 
+ * @returns {object} user information
+ */
+export async function getData(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}`);
+    const data = await response.json();
+
+    console.log(data.data);
+    return data.data;
+  } catch (error) {
+    console.log(error);
+    
+    switch (id) {
+      case "12": 
+        return userDataMock
+      case "18":
+        return user18DataMock
+
+      default:
+        break;
+    }
+  }
+}
+
+/**
+ * Function to get user performance data
+ * @param {string} id 
+ * @returns  {object} User performance
+ */
+export async function getPerformance(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}/performance`);
+    const data = await response.json();
+
+    const performance = data.data.data.map(item => {
+      return {
+        value: item.value,
+        kind: data.data.kind[item.kind]
+      }
+    })
+
+
+    return performance;
+  } catch (error) {
+    console.log(error);
+    switch (id) {
+      case "12": 
+        return userPerformanceMock
+      case "18":
+        return user18PerformanceMock
+
+      default:
+        break;
+    }
+  }
+}
+
+/**
+ * Function to get user activity data
+ * @param {string} id 
+ * @returns {array} User activity
+ */
+export async function getActivity(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}/activity`);
+    const data = await response.json();
+
+    const activity = data.data.sessions
+    activity.forEach((item) => (item.day = parseInt(item.day.slice(-2))));
+    return activity;
+  } catch (error) {
+    console.log(error);
+    switch (id) {
+      case "12": 
+        return userActivityMock
+      case "18":
+        return user18ActivityMock
+
+      default:
+        break;
+    }
+  }
+}
+
+/**
+ * Function to get user average sessions data
+ * @param {string} id 
+ * @returns  {array} Average sessions
+ */
+export async function getAverageSessions(id) {
+  try {
+    const response = await fetch(`${BASE_URL}/${id}/average-sessions`);
+    const data = await response.json();
+
+    const days = ["L", "M", "M", "J", "V", "S", "D"];
+    const sessions = data.data.sessions.map((element, index) => {
+      return { day: days[index], sessionLength: element.sessionLength };
+    });
+
+    console.log("Average Sessions", sessions);
+    return sessions;
+  } catch (error) {
+    console.log(error);
+    switch (id) {
+      case "12": 
+        return userSessionsMock
+      case "18":
+        return user18SessionsMock
+
+      default:
+        break;
+    }
+  }
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#Boton">Boton</a></li><li><a href="global.html#Calories">Calories</a></li><li><a href="global.html#Carbs">Carbs</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Graphics">Graphics</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#Heading">Heading</a></li><li><a href="global.html#Layout">Layout</a></li><li><a href="global.html#Lipids">Lipids</a></li><li><a href="global.html#Logo">Logo</a></li><li><a href="global.html#Menu">Menu</a></li><li><a href="global.html#MenuVertical">MenuVertical</a></li><li><a href="global.html#NotFound">NotFound</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#Proteins">Proteins</a></li><li><a href="global.html#getActivity">getActivity</a></li><li><a href="global.html#getAverageSessions">getAverageSessions</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getPerformance">getPerformance</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Nov 23 2022 18:09:37 GMT+0100 (hora estándar de Europa central)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
