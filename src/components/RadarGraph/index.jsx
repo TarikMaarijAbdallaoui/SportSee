@@ -10,7 +10,10 @@ import {
 } from "recharts";
 import { getPerformance } from "../../getData";
 
-
+/**
+ * Graph Performance component
+ * @returns Recharts Radar Graphs with user performance
+ */
 export default function RadarGraph() {
   const [performance, setPerformance] = useState({});
   const { id } = useParams();

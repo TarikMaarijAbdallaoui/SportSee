@@ -11,6 +11,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import Activity from "../BarChart";
 import ScoreChart from "../ScoreChart";
 
+/**
+ * Component layout for graphics
+ * @Component
+ * @returns {node} container with graphics
+ */
 const Graphics = () => {
   const [user, setUser] = useState({});
   const { id } = useParams();
@@ -33,9 +38,9 @@ const Graphics = () => {
       <div className="graphics">
         <Activity />
         <div className="radar">
-          <div className="average">
+
             <AverageSessions />
-          </div>
+
           <div className="radarg">
             <RadarGraph />
           </div>

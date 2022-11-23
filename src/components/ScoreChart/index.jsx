@@ -1,11 +1,12 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import "./ScoreChart.css";
 
 /**
  * Component for Score Chart
- * @param {*} param0
- * @returns
+ * @param {object} data
+ * @returns Recharts Pie Chart with user score
  */
 export default function ScoreChart({ data }) {
   const todayScore = data;
@@ -50,4 +51,11 @@ export default function ScoreChart({ data }) {
       </ResponsiveContainer>
     </div>
   );
+}
+
+ScoreChart.propTypes = {
+  /**
+   * User Score
+   */
+  data: PropTypes.number
 }

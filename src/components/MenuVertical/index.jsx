@@ -6,6 +6,10 @@ import lifting from '../../assets/lifting.svg'
 import bicycle from '../../assets/bicycle.svg'
 import swimming from '../../assets/swiming.svg'
 
+/**
+ * Component Vertical Menu
+ * @returns Vertical Menu
+ */
 const MenuVertical = () => {
   const botones = [
     {icon: meditation, activity: "Meditation"},

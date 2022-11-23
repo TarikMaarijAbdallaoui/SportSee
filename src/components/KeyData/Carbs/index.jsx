@@ -1,7 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import classes from './Carbs.module.css'
 import icon from '../../../assets/apple.svg'
 
+/**
+ * Component shows Carbs
+ * @Component
+ * @param {string} data Carbs count
+ * @returns 
+ */
 const Carbs = ({data}) => {
         return (
                 <div className={classes.carbs}>
@@ -16,4 +23,10 @@ const Carbs = ({data}) => {
               )
 }
 
+Carbs.propTypes ={
+        /**
+         * Carbs value
+         */
+        data: PropTypes.number   
+}
 export default Carbs

@@ -2,11 +2,13 @@ import Header from "./components/Header";
 import Layout from "./components/Layout";
 import MenuVertical from "./components/MenuVertical";
 import Profile from "./components/Profile";
-// import UserContext from "./contexts/user";
 
+/**
+ * Component App
+ * @returns App container
+ */
 function App() {
   return (
-    // <UserContext>
       <div className="App">
         <Header />
         <Layout>
@@ -14,7 +16,6 @@ function App() {
           <Profile />
         </Layout>
       </div>
-    // </UserContext>
   );
 }
 

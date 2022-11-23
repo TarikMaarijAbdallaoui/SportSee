@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAverageSessions } from "../../getData";
 import { useParams } from "react-router-dom";
+import PropTypes from 'prop-types'
 import {
   LineChart,
   Line,
@@ -14,8 +15,16 @@ import {
 } from "recharts";
 import "./AverageSessions.css"
 
+/**
+ * Tooltip component for average sessions component
+ * @component
+ * @param {bool} active - Tooltip hovered
+ * @param {array} payload - session length
+ * @returns 
+ */
 const CustomTooltip = ({active, payload}) => {
   if (active && payload) {
+    console.log("payload", payload);
     return (
       <div className="tooltip">
         <p>{`${payload[0].value}`}min</p>
@@ -24,6 +33,11 @@ const CustomTooltip = ({active, payload}) => {
   }
 }
 
+/**
+ * Graphic showing average sessions
+ * @component
+ * @returns {node} Recharts bar chart graphics
+ */
 export default function AverageSessions() {
   const [average, setAverage] = useState({});
   const { id } = useParams();
@@ -61,4 +75,15 @@ export default function AverageSessions() {
       </ResponsiveContainer>
     </div>
   );
+}
+
+CustomTooltip.propTypes = {
+  /**
+   * Tooltip being hovered
+   */
+  active: PropTypes.bool,
+  /**
+   * Array with session length and day
+   */ 
+  payload: PropTypes.array
 }

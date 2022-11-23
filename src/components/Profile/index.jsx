@@ -4,6 +4,10 @@ import Heading from '../Heading'
 import './Profile.css'
 import {useParams} from 'react-router-dom'
 
+/**
+ * Component Profile
+ * @returns Profile container
+ */
 const Profile = () => {
   const {id} = useParams()
  

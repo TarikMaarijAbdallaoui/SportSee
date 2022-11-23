@@ -8,6 +8,9 @@ import "./index.css";
 const application = document.getElementById("root");
 const root = ReactDOM.createRoot(application);
 
+/**
+ * React Render method and routes for the app
+ */
 root.render(
   <BrowserRouter>
     <Routes>

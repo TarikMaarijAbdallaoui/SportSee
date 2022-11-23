@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types'
 import { useParams } from "react-router-dom";
 import { getActivity } from "../../getData";
 import {
@@ -14,6 +15,13 @@ import {
 } from "recharts";
 import "./BarChart.css";
 
+/**
+ * Tooltip component for user activity
+ * @component
+ * @param {bool} active - Tooltip hovered
+ * @param {array} payload - User activity
+ * @returns 
+ */
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload) {
     return (
@@ -24,6 +32,12 @@ const CustomTooltip = ({ active, payload }) => {
     );
   }
 };
+
+/**
+ * Graphic showing user activity sessions
+ * @component
+ * @returns {node} Rechart Line chart graphics
+ */
 export default function Activity() {
   const [activity, setActivity] = useState([]);
   const { id } = useParams();
@@ -31,7 +45,6 @@ export default function Activity() {
   useEffect(() => {
     async function fetchUser(id) {
       const userActivity = await getActivity(id);
-      userActivity.forEach((item) => (item.day = parseInt(item.day.slice(-2))));
       setActivity(userActivity);
     }
 
@@ -118,4 +131,15 @@ export default function Activity() {
       </ResponsiveContainer>
     </div>
   );
+}
+
+CustomTooltip.propTypes = {
+  /**
+   * Tooltip being hovered
+   */
+  active: PropTypes.bool,
+  /**
+   * Array with session length and day
+   */ 
+  payload: PropTypes.array
 }

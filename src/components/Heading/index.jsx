@@ -3,6 +3,11 @@ import "./Heading.css";
 import { useParams } from "react-router-dom";
 import { getData } from "../../getData";
 
+/**
+ * Header component welcoming user with name
+ * @Component
+ * @returns {node} Heading welcome username
+ */
 const Heading = () => {
   const [user, setUser] = useState({})
   const { id } = useParams();

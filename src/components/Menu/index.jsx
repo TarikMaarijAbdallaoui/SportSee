@@ -1,6 +1,10 @@
 import React from 'react'
 import './Menu.css'
 
+/**
+ * Component Menu
+ * @returns Top menu
+ */
 const Menu = () => {
   return (
     <nav>

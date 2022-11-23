@@ -1,7 +1,14 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import icon from '../../../assets/cheeseburger.svg'
 import classes from './Lipids.module.css'
 
+/**
+ * Component shows lipid count
+ * @Component
+ * @param {string} data Lipid count
+ * @returns 
+ */
 const Lipids = ({data}) => {
   return (
     <div className={classes.lipids}>
@@ -14,6 +21,13 @@ const Lipids = ({data}) => {
         </div>
     </div>
   )
+}
+
+Lipids.propTypes = {
+  /**
+   * lipids value
+   */
+  data: PropTypes.number
 }
 
 export default Lipids
