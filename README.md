@@ -8,14 +8,19 @@ This is the user page, through which you can track your physical activity throug
 Tarik Maarij Abdallaoui
 
 
-## Technologies
+## Requirements
 
-- Javascript / React
-- React Router
-- Recharts
+- Node.js v16.14.0
+- Javascript / React v18.2.0
+- PropTypes
+- React Router v6.3.0
+- Recharts v2.1.15
 - Fetch
 - CSS
 - HTML
+- JSDoc
+
+Recommended editor: Visual Studio Code
 
 ## Installation
 
