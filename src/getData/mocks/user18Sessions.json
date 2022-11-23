@@ -1,0 +1,30 @@
+[
+        {
+          "day": "L",
+          "sessionLength": 30
+        },
+        {
+          "day": "M",
+          "sessionLength": 40
+        },
+        {
+          "day": "M",
+          "sessionLength": 50
+        },
+        {
+          "day": "J",
+          "sessionLength": 30
+        },
+        {
+          "day": "V",
+          "sessionLength": 30
+        },
+        {
+          "day": "S",
+          "sessionLength": 50
+        },
+        {
+          "day": "D",
+          "sessionLength": 50
+        }
+]

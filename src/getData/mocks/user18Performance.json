@@ -1,0 +1,26 @@
+[
+        {
+          "value": 200,
+          "kind": "cardio"
+        },
+        {
+          "value": 240,
+          "kind": "energy"
+        },
+        {
+          "value": 80,
+          "kind": "endurance"
+        },
+        {
+          "value": 80,
+          "kind": "strength"
+        },
+        {
+          "value": 220,
+          "kind": "speed"
+        },
+        {
+          "value": 110,
+          "kind": "intensity"
+        }
+]
