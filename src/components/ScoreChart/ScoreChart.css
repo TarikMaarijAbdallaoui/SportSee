@@ -1,6 +1,6 @@
 .score_container {
-        width: 258px;
-        height: 263px;
+        width: 30%;
+        max-height: 263px;
         background-color: #fbfbfb;
         border-radius: 5px;
         display: flex;

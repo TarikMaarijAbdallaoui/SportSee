@@ -1,6 +1,6 @@
 .calories {
         display: flex;
-        padding: 32px;
+        padding: 10%;
         background-color: #FBFBFB; 
         width: 258px;
         border-radius: 5px
@@ -24,7 +24,7 @@
 }
 
 .icon{
-        padding: 21px;
+        padding: 5%;
         background-color: #FF000033;
         border-radius: 6px;
 }
