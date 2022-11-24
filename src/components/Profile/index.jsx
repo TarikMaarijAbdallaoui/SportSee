@@ -11,7 +11,6 @@ import {useParams} from 'react-router-dom'
 const Profile = () => {
   const {id} = useParams()
  
-  const name = 'Tarik'
   return (
     <div className='profile'>
       <Heading />

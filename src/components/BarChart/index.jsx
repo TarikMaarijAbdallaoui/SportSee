@@ -45,13 +45,12 @@ export default function Activity() {
   useEffect(() => {
     async function fetchUser(id) {
       const userActivity = await getActivity(id);
+      
       setActivity(userActivity);
     }
 
     fetchUser(id);
   }, []);
-
-  console.log("User activity", activity);
 
   const data = activity;
 

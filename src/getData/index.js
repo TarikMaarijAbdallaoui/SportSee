@@ -21,8 +21,7 @@ export async function getData(id) {
   try {
     const response = await fetch(`${BASE_URL}/${id}`);
     const data = await response.json();
-
-    console.log(data.data);
+    
     return data.data;
   } catch (error) {
     console.log(error);

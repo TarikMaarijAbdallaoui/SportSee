@@ -38,9 +38,7 @@ const Graphics = () => {
       <div className="graphics">
         <Activity />
         <div className="radar">
-
-            <AverageSessions />
-
+          <AverageSessions />
           <div className="radarg">
             <RadarGraph />
           </div>
