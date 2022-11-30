@@ -51,8 +51,6 @@ export default function AverageSessions() {
     fetchUser(id);
   }, []);
 
-  console.log("User average sessions", average);
-
   const data = average;
   return (
     <div className="average">
