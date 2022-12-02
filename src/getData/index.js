@@ -5,11 +5,17 @@ import {
   USER_PERFORMANCE,
 } from './mockedData.js'
 
-const [urlDomain, search] = window.location.href.split('?')
-console.log(search)
-const mocked = search == 'mocked'
+
 
 const BASE_URL = 'http://localhost:3000/user'
+
+const isMocked = () => {
+  const search = window.location.href.split('/')
+  const mocked = search[search.length - 1] == 'mocked'
+
+  return mocked
+}
+
 
 /**
  * Function to get the user info
@@ -17,9 +23,12 @@ const BASE_URL = 'http://localhost:3000/user'
  * @returns {object} user information
  */
 export async function getData(id) {
+
+  const mocked = isMocked()
+
   if (mocked) {
     console.log('Data from mock')
-    const data = USER_MAIN_DATA.find((user) => user.userId == id)
+    const data = USER_MAIN_DATA.find((user) => user.id == id)
     return data
   } else {
     try {
@@ -28,7 +37,7 @@ export async function getData(id) {
       console.log("Data from API");
       return data.data
     } catch (error) {
-      alert('Error:', error)
+      console.error('Error:', error)
 
     }
   }
@@ -40,6 +49,9 @@ export async function getData(id) {
  * @returns  {object} User performance
  */
 export async function getPerformance(id) {
+
+  const mocked = isMocked()
+  
   if (mocked) {
     console.log('Performance from mock')
     const data = USER_PERFORMANCE.find((user) => user.userId == id)
@@ -66,7 +78,7 @@ export async function getPerformance(id) {
       console.log("Performance from API");
       return performance
     } catch (error) {
-      alert('Error:', error)
+      console.error('Error:', error)
 
     }
   }
@@ -78,6 +90,8 @@ export async function getPerformance(id) {
  * @returns {array} User activity
  */
 export async function getActivity(id) {
+  const mocked = isMocked()
+
   if (mocked) {
     console.log('Activity from mock')
     const data = USER_ACTIVITY.find((user) => user.userId == id)
@@ -96,7 +110,7 @@ export async function getActivity(id) {
       console.log("Activity from API");
       return activity
     } catch (error) {
-      alert('Error:', error)
+      console.error('Error:', error)
     }
   }
 }
@@ -107,12 +121,15 @@ export async function getActivity(id) {
  * @returns  {array} Average sessions
  */
 export async function getAverageSessions(id) {
+
+  const mocked = isMocked()
+
   const days = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
   if (mocked) {
     console.log('Average sessions from mock')
     const data = USER_AVERAGE_SESSIONS.find((user) => user.userId == id)
-    const sessions = data.sessions.map((element, index) => {
-      return { day: days[index], sessionLength: element.sessionLength }
+    const sessions = data.sessions.map((element, i) => {
+      return { day: days[i], sessionLength: element.sessionLength }
     })
     return sessions
   } else {
@@ -127,7 +144,7 @@ export async function getAverageSessions(id) {
       console.log("Average sessions from API");
       return sessions
     } catch (error) {
-      alert('Error:', error)
+      console.error('Error:', error)
     }
   }
 }

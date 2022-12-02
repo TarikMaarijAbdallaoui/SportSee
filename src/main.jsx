@@ -16,6 +16,7 @@ root.render(
     <Routes>
       <Route path="/" element={<Navigate to="/user/12" />} />
       <Route path="/user/:id" element={<App />} />
+      <Route path="/user/:id/mocked" element={<App />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </BrowserRouter>
