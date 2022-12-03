@@ -7,7 +7,7 @@ import {
 
 
 
-const BASE_URL = 'http://localhost:3000/user'
+const BASE_URL = 'http://localhost:3000/user/'
 
 const isMocked = () => {
   const search = window.location.href.split('/')
@@ -105,7 +105,7 @@ export async function getActivity(id) {
       const data = await response.json()
 
       const activity = data.data.sessions
-      activity.forEach((item) => (item.day = parseInt(item.day.slice(-2))))
+      activity.forEach((item) => (item.day = parseInt(item.day.slice(-2)))) // 2022-12-02
 
       console.log("Activity from API");
       return activity

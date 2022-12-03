@@ -5,12 +5,10 @@ import { getActivity } from "../../getData";
 import {
   BarChart,
   Bar,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 import "./BarChart.css";
@@ -38,18 +36,18 @@ const CustomTooltip = ({ active, payload }) => {
  * @component
  * @returns {node} Rechart Line chart graphics
  */
-export default function Activity() {
+const Activity = () => {
   const [activity, setActivity] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    async function fetchUser(id) {
+    async function fetchData(id) {
       const userActivity = await getActivity(id);
       
       setActivity(userActivity);
     }
 
-    fetchUser(id);
+    fetchData(id);
   }, []);
 
   const data = activity;
@@ -142,3 +140,5 @@ CustomTooltip.propTypes = {
    */ 
   payload: PropTypes.array
 }
+
+export default Activity;
