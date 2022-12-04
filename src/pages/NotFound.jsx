@@ -9,7 +9,7 @@ import "./NotFound.css";
 const NotFound = () => {
   return (
     <div className="error">
-      <h2>Error</h2>
+      <h2>Erreur lors de la récupération des données du backend</h2>
 
       <div>
         <Link to="/user/12/mocked">voir les données de lútilisateur Karl</Link>

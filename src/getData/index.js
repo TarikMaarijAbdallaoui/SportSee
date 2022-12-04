@@ -7,7 +7,7 @@ import {
 
 
 
-const BASE_URL = 'http://localhost:3000/user/'
+const BASE_URL = 'http://localhost:3000/user'
 
 const isMocked = () => {
   const search = window.location.href.split('/')
@@ -35,6 +35,7 @@ export async function getData(id) {
       const response = await fetch(`${BASE_URL}/${id}`)
       const data = await response.json()
       console.log("Data from API");
+
       return data.data
     } catch (error) {
       console.error('Error:', error)
